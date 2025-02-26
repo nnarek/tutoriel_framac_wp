@@ -1,15 +1,18 @@
-/* run.config
-   OPT:
-*/
-
-
 /*@
   requires \valid_read(a) && \valid_read(b);
+  assigns  \nothing ;
 
-  assigns \nothing ;
+  behavior ab:
+    assumes *a <= *b;
+    ensures \result == *b ;
+  behavior ba:
+    assumes *a >= *b;
+    ensures \result == *a ;
+    
+  ensures  \result == *a || \result == *b ;
 
-  ensures \result \in {*a,*b};
-  ensures *a <= \result && *b <= \result;
+  complete behaviors;
+  //disjoint behaviors;
 */
 int max_ptr(int* a, int* b){
   return (*a < *b) ? *b : *a ;

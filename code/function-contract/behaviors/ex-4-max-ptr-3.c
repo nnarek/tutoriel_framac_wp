@@ -6,12 +6,17 @@
     assumes *a < *b;
     ensures \result == *b ;
   behavior ba:
-    assumes *a >= *b;
+    assumes *a > *b;
     ensures \result == *a ;
 
+  // will make behaviors complete again
+  // behavior eq:
+  //   assumes *a == *b;
+  //   ensures \result == *a ;
+    
   ensures  \result == *a || \result == *b ;
 
-  complete behaviors;
+  //complete behaviors;
   disjoint behaviors;
 */
 int max_ptr(int* a, int* b){

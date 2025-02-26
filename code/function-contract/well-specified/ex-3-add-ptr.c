@@ -2,6 +2,17 @@
    OPT:
 */
 
+#include <limits.h>
+
+/*@
+  requires \valid(p) && \valid(q);
+  requires INT_MIN <= *p + *q <= INT_MAX;
+
+  assigns \nothing;
+
+  ensures \result == *p + *q;
+  ensures \valid(p) && \valid(q);
+*/
 int add(int *p, int *q){
   return *p + *q ;
 }
